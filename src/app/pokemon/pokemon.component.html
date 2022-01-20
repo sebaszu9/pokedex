@@ -1,0 +1,40 @@
+<div class="container"> 
+    <div class="row">
+        <h1 class="my-2 titulo">Tipos de pokémon</h1>
+
+        <div class="row slider">
+            <div class="my-2 row col-md-2" style="margin-left: 10px;" *ngFor="let type of tipos">
+                <button class="btn btn-outline-success my-2" (click)="filter(type.name)">
+                    {{type.name}}
+                </button>
+            </div>
+        </div>
+
+        <div class="titulo" *ngIf="pokemons == '' ">
+            <img src="../../assets/images/Image.jpeg">
+        </div>
+
+        <div class="container__card" *ngIf="pokemons">
+
+            <div class="card c1" style="margin-left : 10px;" *ngFor="let pokemon of pokemons">
+                <div class="imagen">
+                    <img class="card__bg" src="../../assets/images/pokeball-background.png" alt="pokeball-card">
+                    <img src="{{pokemon.sprites.front_default}}" class="card-img-top" >
+                </div>
+                <div class="info__description">
+                    <h1 class="card-title" style="text-transform: capitalize;">
+                        {{pokemon.name}}
+                    </h1>
+                    <span class="card-text bg-color" style="margin-left: 5px;" *ngFor="let type of pokemon.types">
+                        {{type.type.name}}
+                    </span>
+                    <h1 class="card-title my-2">Stats</h1>
+                    <span class="card-text bg-color" style="margin-left: 5px;" *ngFor="let stats of pokemon.stats">
+                        {{stats.stat.name}} - {{stats.base_stat}}
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
